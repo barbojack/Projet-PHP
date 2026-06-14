@@ -1,0 +1,106 @@
+/* ======== CONTENT ======== */
+.content { padding: 28px 40px; }
+
+.page-title-block { margin-bottom: 28px; }
+.page-title { font-size: 26px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.page-sub { font-size: 13px; color: var(--text-muted); }
+
+/* ======== GRILLE ======== */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 1100px) {
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+    .reviews-grid { grid-template-columns: 1fr; }
+}
+
+.review-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-decoration: none;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.15s;
+}
+
+.review-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--red);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.review-card:hover {
+    border-color: #444;
+    transform: translateY(-2px);
+}
+
+.review-card:hover::before { opacity: 1; }
+
+.card-round {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.card-score {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 14px;
+}
+
+.score-num { font-size: 32px; font-weight: 700; color: var(--red); line-height: 1; }
+.score-denom { font-size: 14px; color: var(--text-muted); }
+
+.card-excerpt {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex: 1;
+    margin-bottom: 16px;
+}
+
+.card-footer {
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+}
+
+.admin-badge {
+    font-size: 10px;
+    color: var(--red);
+    border: 1px solid var(--red-dark);
+    background: rgba(225,6,0,0.08);
+    border-radius: 4px;
+    padding: 3px 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.no-reviews {
+    color: var(--text-muted);
+    font-style: italic;
+    grid-column: 1 / -1;
+}

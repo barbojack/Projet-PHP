@@ -21,6 +21,13 @@ class User {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Trouver un utilisateur par username OU email
+    public function findByUsernameOrEmail($identifiant) {
+        $stmt = $this->pdo->prepare("SELECT * FROM Users WHERE username = ? OR email = ?");
+        $stmt->execute([$identifiant, $identifiant]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     // Créer un nouvel utilisateur
     public function create($username, $email, $password) {
         $hash = password_hash($password, PASSWORD_DEFAULT);

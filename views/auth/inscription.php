@@ -1,41 +1,141 @@
 <!DOCTYPE html>
-<html lang="fr-FR">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Inscription — F1 2026</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/f1_2026/css/global.css">
+    <link rel="stylesheet" href="/f1_2026/css/auth.css">
 </head>
 <body>
-    <h1>Créer un compte</h1>
 
-    <?php if ($erreur): ?>
-        <p style="color:#e10600"><?= htmlspecialchars($erreur) ?></p>
-    <?php endif; ?>
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="sidebar-logo">
+        <div class="logo-f1">F1 2026</div>
+        <div class="logo-season">Saison en cours</div>
+    </div>
 
-    <?php if ($succes): ?>
-        <p style="color:#4ade80"><?= htmlspecialchars($succes) ?></p>
-    <?php endif; ?>
+    <nav class="sidebar-nav">
+        <div class="nav-section-label">Navigation</div>
+        <a href="/f1_2026/index.php" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            Accueil
+        </a>
+        <a href="/f1_2026/index.php?page=resultats" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Résultats
+        </a>
+        <a href="/f1_2026/index.php?page=reviews" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Reviews
+        </a>
 
-    <form method="POST" action="index.php?page=inscription">
-        <div>
-            <label>Nom d'utilisateur</label>
-            <input type="text" name="username" required>
-        </div>
-        <div>
-            <label>Adresse e-mail</label>
-            <input type="email" name="email" required>
-        </div>
-        <div>
-            <label>Mot de passe</label>
-            <input type="password" name="password" required>
-        </div>
-        <div>
-            <label>Confirmer le mot de passe</label>
-            <input type="password" name="confirm" required>
-        </div>
-        <button type="submit">Créer mon compte</button>
-    </form>
+        <div class="nav-section-label">Compte</div>
+        <a href="/f1_2026/index.php?page=profil" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Mon profil
+        </a>
+        <a href="/f1_2026/index.php?page=connexion" class="nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            Connexion
+        </a>
+    </nav>
 
-    <p>Déjà un compte ? <a href="index.php?page=connexion">Se connecter</a></p>
+    <div class="sidebar-bottom">
+        <div class="user-role">Non connecté</div>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <div class="topbar">
+        <div class="topbar-left">Inscription</div>
+    </div>
+
+    <div class="content">
+
+        <!-- Fond avec bandes rouges -->
+        <div class="visual-bg">
+            <div class="stripe stripe-1"></div>
+            <div class="stripe stripe-2"></div>
+            <div class="stripe stripe-3"></div>
+            <div class="stripe stripe-4"></div>
+            <div class="stripe stripe-5"></div>
+        </div>
+
+        <!-- Texte en bas à gauche -->
+        <div class="visual-content">
+            <div class="visual-tag">Saison 2026</div>
+            <div class="visual-title">Rejoignez<br>la communauté</div>
+            <div class="visual-desc">Connectez-vous pour commenter les reviews des Grands Prix, partager vos analyses et suivre la saison avec d'autres passionnés de Formule 1.</div>
+            <div class="stats-row">
+                <div>
+                    <div class="stat-val">6</div>
+                    <div class="stat-lbl">Reviews publiées</div>
+                </div>
+                <div>
+                    <div class="stat-val">40+</div>
+                    <div class="stat-lbl">Commentaires</div>
+                </div>
+                <div>
+                    <div class="stat-val">16</div>
+                    <div class="stat-lbl">GP restants</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulaire centré -->
+        <div class="form-box">
+
+            <div class="tabs">
+                <a href="/f1_2026/index.php?page=connexion" class="tab">Se connecter</a>
+                <a href="/f1_2026/index.php?page=inscription" class="tab active">S'inscrire</a>
+            </div>
+
+            <div class="form-box-title"><span class="title-accent"></span>Créer un compte</div>
+            <div class="form-box-sub">Rejoignez la communauté F1 2026</div>
+
+            <?php if ($erreur): ?>
+                <p class="erreur-msg"><?= htmlspecialchars($erreur) ?></p>
+            <?php endif; ?>
+
+            <?php if ($succes): ?>
+                <p class="succes-msg"><?= htmlspecialchars($succes) ?></p>
+            <?php endif; ?>
+
+            <form method="POST" action="/f1_2026/index.php?page=inscription">
+                <div class="form-group">
+                    <label>Nom d'utilisateur</label>
+                    <input type="text" name="username" placeholder="VotreNomPilote" value="<?= htmlspecialchars($username_saisi) ?>" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Adresse e-mail</label>
+                    <input type="email" name="email" placeholder="votre@email.com" value="<?= htmlspecialchars($email_saisi) ?>" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input type="password" name="password" placeholder="••••••••" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Confirmer le mot de passe</label>
+                    <input type="password" name="confirm" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Créer mon compte</button>
+            </form>
+
+            <div class="switch-text">
+                Déjà un compte ? <a href="/f1_2026/index.php?page=connexion" class="switch-link">Se connecter</a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
 </body>
 </html>

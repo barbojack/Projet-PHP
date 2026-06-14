@@ -1,38 +1,145 @@
 <!DOCTYPE html>
-<html lang="fr-FR">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Reviews — F1 2026</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/f1_2026/css/global.css">
+    <link rel="stylesheet" href="/f1_2026/css/reviews.css">
 </head>
+
 <body>
-    <h1>Reviews de la saison 2026</h1>
 
-    <a href="index.php">← Accueil</a>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-f1">F1 2026</div>
+            <div class="logo-season">Saison en cours</div>
+        </div>
 
-    <?php if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>
-        <a href="index.php?page=creer_review">+ Nouvelle review</a>
-    <?php endif; ?>
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">Navigation</div>
+            <a href="/f1_2026/index.php" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                </svg>
+                Accueil
+            </a>
+            <a href="/f1_2026/index.php?page=resultats" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                </svg>
+                Résultats
+            </a>
+            <a href="/f1_2026/index.php?page=reviews" class="nav-item active">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+                Reviews
+            </a>
 
-    <div id="conteneur-courses">
-        <?php if (empty($reviews)): ?>
-            <p class="loading">Aucune review pour le moment.</p>
-        <?php else: ?>
-            <?php foreach ($reviews as $review): ?>
-                <div>
-                    <h2><?= htmlspecialchars($review["title"]) ?></h2>
-                    <p><strong>Note :</strong> <?= $review["mark"] ?>/20</p>
-                    <p><?= htmlspecialchars(substr($review["description"], 0, 150)) ?>...</p>
-                    <p><em>Par <?= htmlspecialchars($review["username"]) ?></em></p>
-                    <a href="index.php?page=review_detail&id=<?= $review["id"] ?>">Lire la review →</a>
-                    <?php if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>
-                        <a href="index.php?page=modifier_review&id=<?= $review["id"] ?>">Modifier</a>
-                        <a href="index.php?page=supprimer_review&id=<?= $review["id"] ?>"
-                           onclick="return confirm('Supprimer cette review ?')">Supprimer</a>
-                    <?php endif; ?>
+            <div class="nav-section-label">Compte</div>
+            <a href="/f1_2026/index.php?page=profil" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                </svg>
+                Mon profil
+            </a>
+
+            <?php if (isset($_SESSION["user_id"])): ?>
+                <a href="/f1_2026/index.php?page=deconnexion" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                    Déconnexion
+                </a>
+            <?php else: ?>
+                <a href="/f1_2026/index.php?page=connexion" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                        <polyline points="10 17 15 12 10 7" />
+                        <line x1="15" y1="12" x2="3" y2="12" />
+                    </svg>
+                    Connexion
+                </a>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>
+                <div class="nav-section-label">Admin</div>
+                <a href="/f1_2026/index.php?page=creer_review" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                    Nouvelle review
+                </a>
+                <a href="/f1_2026/index.php?page=gerer_reviews" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                    </svg>
+                    Gérer les reviews
+                </a>
+            <?php endif; ?>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <?php if (isset($_SESSION["user_id"])): ?>
+                <div class="user-card">
+                    <div class="avatar"><?= strtoupper(substr($_SESSION["username"], 0, 1)) ?></div>
+                    <div>
+                        <div class="user-name"><?= htmlspecialchars($_SESSION["username"]) ?></div>
+                        <div class="user-role"><?= $_SESSION["isAdmin"] ? "Administrateur" : "Utilisateur" ?></div>
+                    </div>
                 </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
+            <?php else: ?>
+                <div class="user-role">Non connecté</div>
+            <?php endif; ?>
+        </div>
     </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="topbar">
+            <div class="topbar-left">Reviews</div>
+        </div>
+
+        <div class="content">
+
+            <div class="page-title-block">
+                <div class="page-title">Reviews de la saison</div>
+                <div class="page-sub">Notes et analyses par les admins — commentez si vous êtes connecté</div>
+            </div>
+
+            <div class="reviews-grid">
+                <?php if (empty($reviews)): ?>
+                    <p class="no-reviews">Aucune review pour le moment.</p>
+                <?php else: ?>
+                    <?php foreach ($reviews as $index => $review): ?>
+                        <a href="/f1_2026/index.php?page=review_detail&id=<?= $review["id"] ?>" class="review-card">
+                            <div class="card-round">Round <?= $index + 1 ?></div>
+                            <div class="card-title"><?= htmlspecialchars($review["title"]) ?></div>
+                            <div class="card-score">
+                                <span class="score-num"><?= $review["mark"] ?></span>
+                                <span class="score-denom">/20</span>
+                            </div>
+                            <div class="card-excerpt"><?= htmlspecialchars(substr($review["description"], 0, 120)) ?>...</div>
+                            <div class="card-footer">
+                                <span class="admin-badge"><?= htmlspecialchars($review["username"]) ?></span>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+
+        </div>
+    </div>
+
 </body>
+
 </html>

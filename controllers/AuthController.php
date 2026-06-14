@@ -12,12 +12,17 @@ class AuthController {
     public function inscription() {
         $erreur = "";
         $succes = "";
+        $username_saisi = "";
+        $email_saisi = "";
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $username = trim($_POST["username"]);
             $email    = trim($_POST["email"]);
             $password = trim($_POST["password"]);
             $confirm  = trim($_POST["confirm"]);
+
+            $username_saisi = $username;
+            $email_saisi    = $email;
 
             if (empty($username) || empty($email) || empty($password) || empty($confirm)) {
                 $erreur = "Tous les champs sont obligatoires.";
@@ -32,6 +37,8 @@ class AuthController {
             } else {
                 $this->userModel->create($username, $email, $password);
                 $succes = "Compte créé avec succès ! Vous pouvez vous connecter.";
+                $username_saisi = "";
+                $email_saisi    = "";
             }
         }
 
@@ -40,24 +47,26 @@ class AuthController {
 
     public function connexion() {
         $erreur = "";
+        $identifiant_saisi = "";
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $username = trim($_POST["username"]);
-            $password = trim($_POST["password"]);
+            $identifiant = trim($_POST["identifiant"]);
+            $password    = trim($_POST["password"]);
+            $identifiant_saisi = $identifiant;
 
-            if (empty($username) || empty($password)) {
+            if (empty($identifiant) || empty($password)) {
                 $erreur = "Tous les champs sont obligatoires.";
             } else {
-                $utilisateur = $this->userModel->findByUsername($username);
+                $utilisateur = $this->userModel->findByUsernameOrEmail($identifiant);
 
                 if (!$utilisateur || !password_verify($password, $utilisateur["password"])) {
-                    $erreur = "Nom d'utilisateur ou mot de passe incorrect.";
+                    $erreur = "Identifiant ou mot de passe incorrect.";
                 } else {
                     $_SESSION["user_id"]  = $utilisateur["id"];
                     $_SESSION["username"] = $utilisateur["username"];
                     $_SESSION["isAdmin"]  = $utilisateur["isAdmin"];
 
-                    header("Location: index.php");
+                    header("Location: /f1_2026/index.php");
                     exit();
                 }
             }
@@ -68,7 +77,7 @@ class AuthController {
 
     public function deconnexion() {
         session_destroy();
-        header("Location: index.php?page=connexion");
+        header("Location: /f1_2026/index.php?page=connexion");
         exit();
     }
 }

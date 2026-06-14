@@ -16,7 +16,7 @@ class ReviewController {
 
     public function detail($pdo) {
         if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {
-            header("Location: index.php?page=reviews");
+            header("Location: /f1_2026/index.php?page=reviews");
             exit();
         }
 
@@ -24,7 +24,7 @@ class ReviewController {
         $review = $this->reviewModel->findById($id);
 
         if (!$review) {
-            header("Location: index.php?page=reviews");
+            header("Location: /f1_2026/index.php?page=reviews");
             exit();
         }
 
@@ -41,7 +41,7 @@ class ReviewController {
                     $erreur = "Le commentaire ne peut pas être vide.";
                 } else {
                     $commentModel->create($contenu, $id, $_SESSION["user_id"]);
-                    header("Location: index.php?page=review_detail&id=$id");
+                    header("Location: /f1_2026/index.php?page=review_detail&id=$id");
                     exit();
                 }
             }
@@ -53,7 +53,7 @@ class ReviewController {
 
     public function creer() {
         if (!isset($_SESSION["user_id"]) || $_SESSION["isAdmin"] != 1) {
-            header("Location: index.php");
+            header("Location: /f1_2026/index.php");
             exit();
         }
 
@@ -61,12 +61,22 @@ class ReviewController {
         $succes = "";
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $title       = trim($_POST["title"]);
+            // Le titre est la combinaison du GP sélectionné + le titre custom
+            $gp_name     = trim($_POST["title"]);
+            $custom_title = trim($_POST["custom_title"]);
             $description = trim($_POST["description"]);
             $mark        = (int) $_POST["mark"];
 
-            if (empty($title) || empty($description)) {
-                $erreur = "Tous les champs sont obligatoires.";
+            // On construit le titre final
+            $title = $gp_name;
+            if (!empty($custom_title)) {
+                $title = $gp_name . " — " . $custom_title;
+            }
+
+            if (empty($gp_name)) {
+                $erreur = "Veuillez choisir un Grand Prix.";
+            } elseif (empty($description)) {
+                $erreur = "Le texte de la review est obligatoire.";
             } elseif ($mark < 0 || $mark > 20) {
                 $erreur = "La note doit être comprise entre 0 et 20.";
             } else {
@@ -80,12 +90,12 @@ class ReviewController {
 
     public function modifier() {
         if (!isset($_SESSION["user_id"]) || $_SESSION["isAdmin"] != 1) {
-            header("Location: index.php");
+            header("Location: /f1_2026/index.php");
             exit();
         }
 
         if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {
-            header("Location: index.php?page=reviews");
+            header("Location: /f1_2026/index.php?page=reviews");
             exit();
         }
 
@@ -93,7 +103,7 @@ class ReviewController {
         $review = $this->reviewModel->findById($id);
 
         if (!$review) {
-            header("Location: index.php?page=reviews");
+            header("Location: /f1_2026/index.php?page=reviews");
             exit();
         }
 
@@ -121,18 +131,18 @@ class ReviewController {
 
     public function supprimer() {
         if (!isset($_SESSION["user_id"]) || $_SESSION["isAdmin"] != 1) {
-            header("Location: index.php");
+            header("Location: /f1_2026/index.php");
             exit();
         }
 
         if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {
-            header("Location: index.php?page=reviews");
+            header("Location: /f1_2026/index.php?page=reviews");
             exit();
         }
 
         $id = (int) $_GET["id"];
         $this->reviewModel->delete($id);
-        header("Location: index.php?page=reviews");
+        header("Location: /f1_2026/index.php?page=reviews");
         exit();
     }
 }

@@ -13,6 +13,10 @@ switch ($page) {
         require BASE_PATH . 'views' . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . 'accueil.php';
         break;
 
+    case "resultats":
+        require BASE_PATH . 'views' . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . 'resultats.php';
+        break;
+
     case "inscription":
         require_once BASE_PATH . 'controllers' . DIRECTORY_SEPARATOR . 'AuthController.php';
         $controller = new AuthController($pdo);
