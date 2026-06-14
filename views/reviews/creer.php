@@ -106,16 +106,16 @@
                                 <option value="Chinese Grand Prix">Round 02 — Grand Prix de Chine</option>
                                 <option value="Japanese Grand Prix">Round 03 — Grand Prix du Japon</option>
                                 <option value="Miami Grand Prix">Round 04 — Grand Prix de Miami</option>
-                                <option value="Emilia Romagna Grand Prix">Round 05 — Grand Prix d'Emilie Romagne </option>
+                                <option value="Canadian Grand Prix">Round 05 — Grand Prix du Canada</option>
                                 <option value="Monaco Grand Prix">Round 06 — Grand Prix de Monaco</option>
-                                <option value="Canadian Grand Prix">Round 07 — Grand Prix du Canada</option>
-                                <option value="Spanish Grand Prix">Round 08 — Grand Prix d'Espagne</option>
-                                <option value="Austrian Grand Prix">Round 09 — Grand Prix d'Autriche</option>
-                                <option value="British Grand Prix">Round 10 — Grand Prix de Grande-Bretagne</option>
+                                <option value="Spanish Grand Prix">Round 07 — Grand Prix d'Espagne</option>
+                                <option value="Austrian Grand Prix">Round 08 — Grand Prix d'Autriche</option>
+                                <option value="British Grand Prix">Round 09 — Grand Prix de Grande-Bretagne</option>
+                                <option value="Belgian Grand Prix">Round 10 — Grand Prix de Belgique</option>
                                 <option value="Hungarian Grand Prix">Round 11 — Grand Prix d'Hongrie</option>
-                                <option value="Belgian Grand Prix">Round 12 — Grand Prix de Belgique</option>
-                                <option value="Dutch Grand Prix">Round 13 — Grand Prix des Pays-Bas</option>
-                                <option value="Italian Grand Prix">Round 14 — Grand Prix d'Italie</option>
+                                <option value="Dutch Grand Prix">Round 12 — Grand Prix des Pays-Bas</option>
+                                <option value="Italian Grand Prix">Round 13 — Grand Prix d'Italie</option>
+                                <option value="spanish Grand Prix">Round 14 — Grand Prix de Madrid</option>
                                 <option value="Azerbaijan Grand Prix">Round 15 — Grand Prix d'Azerbaijan</option>
                                 <option value="Singapore Grand Prix">Round 16 — Grand Prix de Singapoure </option>
                                 <option value="United States Grand Prix">Round 17 — Grand Prix des Etats-Unis</option>
@@ -194,16 +194,16 @@
         "Chinese Grand Prix":         { round: "Round 02", ville: "Shanghai" },
         "Japanese Grand Prix":        { round: "Round 03", ville: "Suzuka" },
         "Miami Grand Prix":           { round: "Round 04", ville: "Miami" },
-        "Emilia Romagna Grand Prix":  { round: "Round 05", ville: "Imola" },
+        "Canadian Grand Prix":        { round: "Round 05", ville: "Montréal" },
         "Monaco Grand Prix":          { round: "Round 06", ville: "Monaco" },
-        "Canadian Grand Prix":        { round: "Round 07", ville: "Montréal" },
-        "Spanish Grand Prix":         { round: "Round 08", ville: "Barcelone" },
-        "Austrian Grand Prix":        { round: "Round 09", ville: "Spielberg" },
-        "British Grand Prix":         { round: "Round 10", ville: "Silverstone" },
+        "Spanish Grand Prix":         { round: "Round 07", ville: "Barcelone" },
+        "Austrian Grand Prix":        { round: "Round 08", ville: "Spielberg" },
+        "British Grand Prix":         { round: "Round 09", ville: "Silverstone" },
+        "Belgian Grand Prix":         { round: "Round 10", ville: "Spa" },
         "Hungarian Grand Prix":       { round: "Round 11", ville: "Budapest" },
-        "Belgian Grand Prix":         { round: "Round 12", ville: "Spa" },
-        "Dutch Grand Prix":           { round: "Round 13", ville: "Zandvoort" },
-        "Italian Grand Prix":         { round: "Round 14", ville: "Monza" },
+        "Dutch Grand Prix":           { round: "Round 12", ville: "Zandvoort" },
+        "Italian Grand Prix":         { round: "Round 13", ville: "Monza" },
+        "spanish Grand Prix":         { round: "Round 14", ville: "Madrid" },
         "Azerbaijan Grand Prix":      { round: "Round 15", ville: "Bakou" },
         "Singapore Grand Prix":       { round: "Round 16", ville: "Singapour" },
         "United States Grand Prix":   { round: "Round 17", ville: "Austin" },
