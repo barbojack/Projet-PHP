@@ -61,6 +61,11 @@ switch ($page) {
         $controller->supprimer();
         break;
 
+    case "gerer_reviews":
+        $controller = new ReviewController($pdo);
+        $controller->gerer($pdo);
+        break;
+
     case "modifier_commentaire":
         $controller = new CommentController($pdo);
         $controller->modifier();
@@ -70,7 +75,7 @@ switch ($page) {
         $controller = new CommentController($pdo);
         $controller->supprimer();
         break;
-        
+
     default:
         require BASE_PATH . 'views' . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . 'accueil.php';
         break;

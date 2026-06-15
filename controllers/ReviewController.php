@@ -61,13 +61,11 @@ class ReviewController {
         $succes = "";
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            // Le titre est la combinaison du GP sélectionné + le titre custom
-            $gp_name     = trim($_POST["title"]);
+            $gp_name      = trim($_POST["title"]);
             $custom_title = trim($_POST["custom_title"]);
-            $description = trim($_POST["description"]);
-            $mark        = (int) $_POST["mark"];
+            $description  = trim($_POST["description"]);
+            $mark         = (int) $_POST["mark"];
 
-            // On construit le titre final
             $title = $gp_name;
             if (!empty($custom_title)) {
                 $title = $gp_name . " — " . $custom_title;
@@ -129,6 +127,28 @@ class ReviewController {
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'modifier.php';
     }
 
+    public function gerer($pdo) {
+        if (!isset($_SESSION["user_id"]) || $_SESSION["isAdmin"] != 1) {
+            header("Location: /f1_2026/index.php");
+            exit();
+        }
+
+        require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Comment.php';
+        $commentModel = new Comment($pdo);
+
+        $reviews = $this->reviewModel->findAll();
+        $totalCommentaires = 0;
+        $nbCommentairesParReview = [];
+
+        foreach ($reviews as $review) {
+            $nb = count($commentModel->findByReviewId($review["id"]));
+            $nbCommentairesParReview[$review["id"]] = $nb;
+            $totalCommentaires += $nb;
+        }
+
+        require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'gerer.php';
+    }
+
     public function supprimer() {
         if (!isset($_SESSION["user_id"]) || $_SESSION["isAdmin"] != 1) {
             header("Location: /f1_2026/index.php");
@@ -142,7 +162,7 @@ class ReviewController {
 
         $id = (int) $_GET["id"];
         $this->reviewModel->delete($id);
-        header("Location: /f1_2026/index.php?page=reviews");
+        header("Location: /f1_2026/index.php?page=gerer_reviews");
         exit();
     }
 }
