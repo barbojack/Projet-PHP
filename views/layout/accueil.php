@@ -196,8 +196,8 @@
         <!-- Dernière review -->
         <?php
         require_once __DIR__ . '/../../models/Review.php';
-        $reviewModel = new Review($pdo);
-        $reviews = $reviewModel->findAll();
+        $reviewModelAcceuil = new Review($pdo);
+        $reviews = $reviewModelAcceuil->findAll();
         $derniereReview = !empty($reviews) ? $reviews[0] : null;
         ?>
 

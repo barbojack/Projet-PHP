@@ -111,7 +111,7 @@
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
                 <div>
-                    <div class="stat-val"><?= 24 - count($reviews) ?></div>
+                    <div class="stat-val"><?= 22 - count($reviews) ?></div>
                     <div class="stat-lbl">GP sans review</div>
                 </div>
             </div>
