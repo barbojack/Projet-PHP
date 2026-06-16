@@ -4,7 +4,6 @@ require 'db.php';
 
 define('BASE_PATH', __DIR__ . DIRECTORY_SEPARATOR);
 
-// On charge tous les controllers une seule fois
 require_once BASE_PATH . 'controllers' . DIRECTORY_SEPARATOR . 'AuthController.php';
 require_once BASE_PATH . 'controllers' . DIRECTORY_SEPARATOR . 'ReviewController.php';
 require_once BASE_PATH . 'controllers' . DIRECTORY_SEPARATOR . 'CommentController.php';
