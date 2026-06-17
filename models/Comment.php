@@ -1,14 +1,17 @@
 <?php
 
-class Comment {
+class Comment
+{
     private $pdo;
 
-    public function __construct($pdo) {
+    public function __construct($pdo)
+    {
         $this->pdo = $pdo;
     }
 
     // Récupérer tous les commentaires d'une review
-    public function findByReviewId($reviewId) {
+    public function findByReviewId($reviewId)
+    {
         $stmt = $this->pdo->prepare("
             SELECT Comments.*, Users.username 
             FROM Comments 
@@ -21,14 +24,16 @@ class Comment {
     }
 
     // Récupérer un commentaire par son ID
-    public function findById($id) {
+    public function findById($id)
+    {
         $stmt = $this->pdo->prepare("SELECT * FROM Comments WHERE id = ?");
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     // Créer un commentaire
-    public function create($content, $reviewId, $authorId) {
+    public function create($content, $reviewId, $authorId)
+    {
         $stmt = $this->pdo->prepare("
             INSERT INTO Comments (content, reviewId, authorId) VALUES (?, ?, ?)
         ");
@@ -36,13 +41,15 @@ class Comment {
     }
 
     // Modifier un commentaire
-    public function update($id, $content) {
+    public function update($id, $content)
+    {
         $stmt = $this->pdo->prepare("UPDATE Comments SET content = ? WHERE id = ?");
         $stmt->execute([$content, $id]);
     }
 
     // Supprimer un commentaire
-    public function delete($id) {
+    public function delete($id)
+    {
         $stmt = $this->pdo->prepare("DELETE FROM Comments WHERE id = ?");
         $stmt->execute([$id]);
     }

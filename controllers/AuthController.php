@@ -2,14 +2,17 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'db.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'User.php';
 
-class AuthController {
+class AuthController
+{
     private $userModel;
 
-    public function __construct($pdo) {
+    public function __construct($pdo)
+    {
         $this->userModel = new User($pdo);
     }
 
-    public function inscription() {
+    public function inscription()
+    {
         $erreur = "";
         $succes = "";
         $username_saisi = "";
@@ -45,7 +48,8 @@ class AuthController {
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'auth' . DIRECTORY_SEPARATOR . 'inscription.php';
     }
 
-    public function connexion() {
+    public function connexion()
+    {
         $erreur = "";
         $identifiant_saisi = "";
 
@@ -75,7 +79,8 @@ class AuthController {
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'auth' . DIRECTORY_SEPARATOR . 'connexion.php';
     }
 
-    public function deconnexion() {
+    public function deconnexion()
+    {
         session_destroy();
         header("Location: /f1_2026/index.php?page=connexion");
         exit();

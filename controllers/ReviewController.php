@@ -2,19 +2,23 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'db.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Review.php';
 
-class ReviewController {
+class ReviewController
+{
     private $reviewModel;
 
-    public function __construct($pdo) {
+    public function __construct($pdo)
+    {
         $this->reviewModel = new Review($pdo);
     }
 
-    public function liste() {
+    public function liste()
+    {
         $reviews = $this->reviewModel->findAll();
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'liste.php';
     }
 
-    public function detail($pdo) {
+    public function detail($pdo)
+    {
         if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {
             header("Location: /f1_2026/index.php?page=reviews");
             exit();
@@ -51,7 +55,8 @@ class ReviewController {
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'detail.php';
     }
 
-    public function creer() {
+    public function creer()
+    {
         if (!isset($_SESSION["user_id"]) || $_SESSION["isAdmin"] != 1) {
             header("Location: /f1_2026/index.php");
             exit();
@@ -86,7 +91,8 @@ class ReviewController {
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'creer.php';
     }
 
-    public function modifier() {
+    public function modifier()
+    {
         if (!isset($_SESSION["user_id"]) || $_SESSION["isAdmin"] != 1) {
             header("Location: /f1_2026/index.php");
             exit();
@@ -127,7 +133,8 @@ class ReviewController {
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'modifier.php';
     }
 
-    public function gerer($pdo) {
+    public function gerer($pdo)
+    {
         if (!isset($_SESSION["user_id"]) || $_SESSION["isAdmin"] != 1) {
             header("Location: /f1_2026/index.php");
             exit();
@@ -149,7 +156,8 @@ class ReviewController {
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'gerer.php';
     }
 
-    public function supprimer() {
+    public function supprimer()
+    {
         if (!isset($_SESSION["user_id"]) || $_SESSION["isAdmin"] != 1) {
             header("Location: /f1_2026/index.php");
             exit();

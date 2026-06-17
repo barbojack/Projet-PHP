@@ -79,4 +79,3 @@ switch ($page) {
         require BASE_PATH . 'views' . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . 'accueil.php';
         break;
 }
-?>

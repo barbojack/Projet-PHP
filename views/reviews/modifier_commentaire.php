@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
+
 <head>
     <meta charset="UTF-8">
     <title>Modifier le commentaire — F1 2026</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <a href="index.php?page=review_detail&id=<?= $review_id ?>">← Retour à la review</a>
 
@@ -19,4 +21,5 @@
         <button type="submit">Enregistrer</button>
     </form>
 </body>
+
 </html>

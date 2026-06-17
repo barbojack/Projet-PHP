@@ -1,14 +1,17 @@
 <?php
 
-class Review {
+class Review
+{
     private $pdo;
 
-    public function __construct($pdo) {
+    public function __construct($pdo)
+    {
         $this->pdo = $pdo;
     }
 
     // Récupérer toutes les reviews avec le nom de l'auteur
-    public function findAll() {
+    public function findAll()
+    {
         $stmt = $this->pdo->query("
             SELECT Reviews.*, Users.username 
             FROM Reviews 
@@ -19,7 +22,8 @@ class Review {
     }
 
     // Récupérer une review par son ID
-    public function findById($id) {
+    public function findById($id)
+    {
         $stmt = $this->pdo->prepare("
             SELECT Reviews.*, Users.username 
             FROM Reviews 
@@ -31,7 +35,8 @@ class Review {
     }
 
     // Créer une review
-    public function create($title, $description, $mark, $authorId) {
+    public function create($title, $description, $mark, $authorId)
+    {
         $stmt = $this->pdo->prepare("
             INSERT INTO Reviews (title, description, mark, authorId) 
             VALUES (?, ?, ?, ?)
@@ -40,7 +45,8 @@ class Review {
     }
 
     // Modifier une review
-    public function update($id, $title, $description, $mark) {
+    public function update($id, $title, $description, $mark)
+    {
         $stmt = $this->pdo->prepare("
             UPDATE Reviews SET title = ?, description = ?, mark = ? 
             WHERE id = ?
@@ -49,7 +55,8 @@ class Review {
     }
 
     // Supprimer une review
-    public function delete($id) {
+    public function delete($id)
+    {
         $stmt = $this->pdo->prepare("DELETE FROM Reviews WHERE id = ?");
         $stmt->execute([$id]);
     }

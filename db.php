@@ -16,7 +16,6 @@ try {
 
     // PDO affichera les erreurs SQL au lieu de les cacher
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 } catch (PDOException $e) {
     // Si la connexion échoue, on arrête tout et on affiche l'erreur
     die("Erreur de connexion : " . $e->getMessage());

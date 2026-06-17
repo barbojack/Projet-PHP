@@ -2,14 +2,17 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'db.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Comment.php';
 
-class CommentController {
+class CommentController
+{
     private $commentModel;
 
-    public function __construct($pdo) {
+    public function __construct($pdo)
+    {
         $this->commentModel = new Comment($pdo);
     }
 
-    public function modifier() {
+    public function modifier()
+    {
         if (!isset($_SESSION["user_id"])) {
             header("Location: index.php");
             exit();
@@ -45,7 +48,8 @@ class CommentController {
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'modifier_commentaire.php';
     }
 
-    public function supprimer() {
+    public function supprimer()
+    {
         if (!isset($_SESSION["user_id"])) {
             header("Location: index.php");
             exit();
