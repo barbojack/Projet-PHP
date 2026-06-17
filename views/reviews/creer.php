@@ -191,7 +191,7 @@
                 <div class="preview-col">
                     <div class="preview-label">Aperçu de la carte</div>
                     <div class="preview-card">
-                        <div class="preview-round" id="p-round">Round ?? · —</div>
+                        <div class="preview-round" id="p-round">Manche ?? · —</div>
                         <div class="preview-name" id="p-name">Nom du Grand Prix</div>
                         <div class="preview-score-row">
                             <span class="preview-score-num" id="p-score">10</span>
