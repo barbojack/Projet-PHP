@@ -126,28 +126,28 @@
                                 <label>Grand Prix</label>
                                 <select name="title" id="gp-select" onchange="updatePreview()">
                                     <option value="">-- Choisir un Grand Prix --</option>
-                                    <option value="Australian Grand Prix">Round 01 — Grand Prix d'Australie</option>
-                                    <option value="Chinese Grand Prix">Round 02 — Grand Prix de Chine</option>
-                                    <option value="Japanese Grand Prix">Round 03 — Grand Prix du Japon</option>
-                                    <option value="Miami Grand Prix">Round 04 — Grand Prix de Miami</option>
-                                    <option value="Canadian Grand Prix">Round 05 — Grand Prix du Canada</option>
-                                    <option value="Monaco Grand Prix">Round 06 — Grand Prix de Monaco</option>
-                                    <option value="Spanish Grand Prix">Round 07 — Grand Prix d'Espagne</option>
-                                    <option value="Austrian Grand Prix">Round 08 — Grand Prix d'Autriche</option>
-                                    <option value="British Grand Prix">Round 09 — Grand Prix de Grande-Bretagne</option>
-                                    <option value="Belgian Grand Prix">Round 10 — Grand Prix de Belgique</option>
-                                    <option value="Hungarian Grand Prix">Round 11 — Grand Prix d'Hongrie</option>
-                                    <option value="Dutch Grand Prix">Round 12 — Grand Prix des Pays-Bas</option>
-                                    <option value="Italian Grand Prix">Round 13 — Grand Prix d'Italie</option>
-                                    <option value="spanish Grand Prix">Round 14 — Grand Prix de Madrid</option>
-                                    <option value="Azerbaijan Grand Prix">Round 15 — Grand Prix d'Azerbaijan</option>
-                                    <option value="Singapore Grand Prix">Round 16 — Grand Prix de Singapoure </option>
-                                    <option value="United States Grand Prix">Round 17 — Grand Prix des Etats-Unis</option>
-                                    <option value="Mexico City Grand Prix">Round 18 — Grand Prix du Mexique</option>
-                                    <option value="São Paulo Grand Prix">Round 19 — Grand Prix du Brésil</option>
-                                    <option value="Las Vegas Grand Prix">Round 20 — Grand Prix de Las Vegas</option>
-                                    <option value="Qatar Grand Prix">Round 21 — Grand Prix du Qatar </option>
-                                    <option value="Abu Dhabi Grand Prix">Round 22 — Grand Prix d'Abu Dhabi</option>
+                                    <option value="Australian Grand Prix">Manche 01 — Grand Prix d'Australie</option>
+                                    <option value="Chinese Grand Prix">Manche 02 — Grand Prix de Chine</option>
+                                    <option value="Japanese Grand Prix">Manche 03 — Grand Prix du Japon</option>
+                                    <option value="Miami Grand Prix">Manche 04 — Grand Prix de Miami</option>
+                                    <option value="Canadian Grand Prix">Manche 05 — Grand Prix du Canada</option>
+                                    <option value="Monaco Grand Prix">Manche 06 — Grand Prix de Monaco</option>
+                                    <option value="Spanish Grand Prix">Manche 07 — Grand Prix d'Espagne</option>
+                                    <option value="Austrian Grand Prix">Manche 08 — Grand Prix d'Autriche</option>
+                                    <option value="British Grand Prix">Manche 09 — Grand Prix de Grande-Bretagne</option>
+                                    <option value="Belgian Grand Prix">Manche 10 — Grand Prix de Belgique</option>
+                                    <option value="Hungarian Grand Prix">Manche 11 — Grand Prix d'Hongrie</option>
+                                    <option value="Dutch Grand Prix">Manche 12 — Grand Prix des Pays-Bas</option>
+                                    <option value="Italian Grand Prix">Manche 13 — Grand Prix d'Italie</option>
+                                    <option value="spanish Grand Prix">Manche 14 — Grand Prix de Madrid</option>
+                                    <option value="Azerbaijan Grand Prix">Manche 15 — Grand Prix d'Azerbaijan</option>
+                                    <option value="Singapore Grand Prix">Manche 16 — Grand Prix de Singapoure </option>
+                                    <option value="United States Grand Prix">Manche 17 — Grand Prix des Etats-Unis</option>
+                                    <option value="Mexico City Grand Prix">Manche 18 — Grand Prix du Mexique</option>
+                                    <option value="São Paulo Grand Prix">Manche 19 — Grand Prix du Brésil</option>
+                                    <option value="Las Vegas Grand Prix">Manche 20 — Grand Prix de Las Vegas</option>
+                                    <option value="Qatar Grand Prix">Manche 21 — Grand Prix du Qatar </option>
+                                    <option value="Abu Dhabi Grand Prix">Manche 22 — Grand Prix d'Abu Dhabi</option>
                                 </select>
                             </div>
 
