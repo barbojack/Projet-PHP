@@ -151,8 +151,30 @@
                 <div class="results-grid">
 
                     <div class="result-card">
+                        <div class="rc-round">Round 07 · Barcelone</div>
+                        <div class="rc-name">Grand Prix de Barcelone</div>
+                        <div class="podium">
+                            <div class="podium-row">
+                                <span class="podium-pos p1">1</span>
+                                <span class="podium-driver">L. Hamilton</span>
+                                <span class="podium-team">Ferrari</span>
+                            </div>
+                            <div class="podium-row">
+                                <span class="podium-pos p2">2</span>
+                                <span class="podium-driver">G. Russel</span>
+                                <span class="podium-team">Mercedes</span>
+                            </div>
+                            <div class="podium-row">
+                                <span class="podium-pos p3">3</span>
+                                <span class="podium-driver">L. Norris</span>
+                                <span class="podium-team">McLaren</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-card">
                         <div class="rc-round">Round 06 · Monaco</div>
-                        <div class="rc-name">Monaco GP</div>
+                        <div class="rc-name">Grand Prix de Monaco</div>
                         <div class="podium">
                             <div class="podium-row">
                                 <span class="podium-pos p1">1</span>
@@ -174,7 +196,7 @@
 
                     <div class="result-card">
                         <div class="rc-round">Round 05 · Montréal</div>
-                        <div class="rc-name">Canadian GP</div>
+                        <div class="rc-name">Grand Prix du Canada</div>
                         <div class="podium">
                             <div class="podium-row">
                                 <span class="podium-pos p1">1</span>
@@ -190,28 +212,6 @@
                                 <span class="podium-pos p3">3</span>
                                 <span class="podium-driver">M. Verstappen</span>
                                 <span class="podium-team">Red Bull</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="result-card">
-                        <div class="rc-round">Round 04 · Miami</div>
-                        <div class="rc-name">Miami GP</div>
-                        <div class="podium">
-                            <div class="podium-row">
-                                <span class="podium-pos p1">1</span>
-                                <span class="podium-driver">A. Antonelli</span>
-                                <span class="podium-team">Mercedes</span>
-                            </div>
-                            <div class="podium-row">
-                                <span class="podium-pos p2">2</span>
-                                <span class="podium-driver">L. Norris</span>
-                                <span class="podium-team">McLaren</span>
-                            </div>
-                            <div class="podium-row">
-                                <span class="podium-pos p3">3</span>
-                                <span class="podium-driver">O. Piastri</span>
-                                <span class="podium-team">McLaren</span>
                             </div>
                         </div>
                     </div>
