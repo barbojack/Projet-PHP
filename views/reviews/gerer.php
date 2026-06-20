@@ -207,7 +207,7 @@
                                         </svg>
                                         Modifier
                                     </a>
-                                    <a href="#" class="btn-action danger" onclick="ouvrirModal(<?= $review["id"] ?>, '<?= addslashes(htmlspecialchars($review["title"])) ?>')">
+                                    <a href="#" class="btn-action danger" data-id="<?= $review["id"] ?>" data-nom="<?= htmlspecialchars($review["title"], ENT_QUOTES) ?>" onclick="ouvrirModal(this)">
                                         <svg viewBox="0 0 24 24">
                                             <polyline points="3 6 5 6 21 6" />
                                             <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
@@ -245,7 +245,9 @@
     </div>
 
     <script>
-        function ouvrirModal(id, nom) {
+        function ouvrirModal(el) {
+            const id = el.getAttribute('data-id');
+            const nom = el.getAttribute('data-nom');
             document.getElementById('modal-sub').textContent =
                 'Vous allez supprimer la review "' + nom + '". Cette action est irréversible.';
             document.getElementById('modal-confirm-btn').href =
