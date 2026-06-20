@@ -122,7 +122,7 @@
                 <?php else: ?>
                     <?php foreach ($reviews as $index => $review): ?>
                         <a href="/f1_2026/index.php?page=review_detail&id=<?= $review["id"] ?>" class="review-card">
-                            <div class="card-round">Round <?= $index + 1 ?></div>
+                            <div class="card-round">Manche <?= $index + 1 ?></div>
                             <div class="card-title"><?= htmlspecialchars($review["title"]) ?></div>
                             <div class="card-score">
                                 <span class="score-num"><?= $review["mark"] ?></span>

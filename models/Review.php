@@ -16,7 +16,7 @@ class Review
             SELECT Reviews.*, Users.username 
             FROM Reviews 
             JOIN Users ON Reviews.authorId = Users.id 
-            ORDER BY Reviews.id DESC
+            ORDER BY Reviews.id ASC
         ");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

@@ -126,28 +126,28 @@
                                 <label>Grand Prix</label>
                                 <select name="title" id="gp-select" onchange="updatePreview()">
                                     <option value="">-- Choisir un Grand Prix --</option>
-                                    <option value="Australian Grand Prix">Manche 01 — Grand Prix d'Australie</option>
-                                    <option value="Chinese Grand Prix">Manche 02 — Grand Prix de Chine</option>
-                                    <option value="Japanese Grand Prix">Manche 03 — Grand Prix du Japon</option>
-                                    <option value="Miami Grand Prix">Manche 04 — Grand Prix de Miami</option>
-                                    <option value="Canadian Grand Prix">Manche 05 — Grand Prix du Canada</option>
-                                    <option value="Monaco Grand Prix">Manche 06 — Grand Prix de Monaco</option>
-                                    <option value="Spanish Grand Prix">Manche 07 — Grand Prix d'Espagne</option>
-                                    <option value="Austrian Grand Prix">Manche 08 — Grand Prix d'Autriche</option>
-                                    <option value="British Grand Prix">Manche 09 — Grand Prix de Grande-Bretagne</option>
-                                    <option value="Belgian Grand Prix">Manche 10 — Grand Prix de Belgique</option>
-                                    <option value="Hungarian Grand Prix">Manche 11 — Grand Prix d'Hongrie</option>
-                                    <option value="Dutch Grand Prix">Manche 12 — Grand Prix des Pays-Bas</option>
-                                    <option value="Italian Grand Prix">Manche 13 — Grand Prix d'Italie</option>
-                                    <option value="spanish Grand Prix">Manche 14 — Grand Prix de Madrid</option>
-                                    <option value="Azerbaijan Grand Prix">Manche 15 — Grand Prix d'Azerbaijan</option>
-                                    <option value="Singapore Grand Prix">Manche 16 — Grand Prix de Singapoure </option>
-                                    <option value="United States Grand Prix">Manche 17 — Grand Prix des Etats-Unis</option>
-                                    <option value="Mexico City Grand Prix">Manche 18 — Grand Prix du Mexique</option>
-                                    <option value="São Paulo Grand Prix">Manche 19 — Grand Prix du Brésil</option>
-                                    <option value="Las Vegas Grand Prix">Manche 20 — Grand Prix de Las Vegas</option>
-                                    <option value="Qatar Grand Prix">Manche 21 — Grand Prix du Qatar </option>
-                                    <option value="Abu Dhabi Grand Prix">Manche 22 — Grand Prix d'Abu Dhabi</option>
+                                    <option value="Grand Prix d'Australie">round 01 — Grand Prix d'Australie</option>
+                                    <option value="Grand Prix de Chine">round 02 — Grand Prix de Chine</option>
+                                    <option value="Grand Prix du Japon">round 03 — Grand Prix du Japon</option>
+                                    <option value="Grand Prix de Miami">round 04 — Grand Prix de Miami</option>
+                                    <option value="Grand Prix du Canada">round 05 — Grand Prix du Canada</option>
+                                    <option value="Grand Prix de Monaco">round 06 — Grand Prix de Monaco</option>
+                                    <option value="Grand Prix de Barcelone">round 07 — Grand Prix de Barcelone</option>
+                                    <option value="Grand Prix d'Autriche">round 08 — Grand Prix d'Autriche</option>
+                                    <option value="Grand Prix de Grande-Bretagne">round 09 — Grand Prix de Grande-Bretagne</option>
+                                    <option value="Grand Prix de Belgique">round 10 — Grand Prix de Belgique</option>
+                                    <option value="Grand Prix d'Hongire">round 11 — Grand Prix d'Hongrie</option>
+                                    <option value="Grand Prix des Pays-Bas">round 12 — Grand Prix des Pays-Bas</option>
+                                    <option value="Grand Prix d'Italie">round 13 — Grand Prix d'Italie</option>
+                                    <option value="Grand Prix de Madrid">round 14 — Grand Prix de Madrid</option>
+                                    <option value="Grand Prix d'Azerbaijan">round 15 — Grand Prix d'Azerbaijan</option>
+                                    <option value="Grand Prix de Singapoure">round 16 — Grand Prix de Singapoure </option>
+                                    <option value="Grand Prix des Etats-Unis">round 17 — Grand Prix des Etats-Unis</option>
+                                    <option value="Grand Prix du Mexique">round 18 — Grand Prix du Mexique</option>
+                                    <option value="Grand Prix du Brésil">round 19 — Grand Prix du Brésil</option>
+                                    <option value="Grand Prix de Las Vegas">round 20 — Grand Prix de Las Vegas</option>
+                                    <option value="Grand Prix du Qatar">round 21 — Grand Prix du Qatar </option>
+                                    <option value="Grand Prix d'Abu Dhabi">round 22 — Grand Prix d'Abu Dhabi</option>
                                 </select>
                             </div>
 
@@ -191,7 +191,7 @@
                 <div class="preview-col">
                     <div class="preview-label">Aperçu de la carte</div>
                     <div class="preview-card">
-                        <div class="preview-round" id="p-round">Round ?? · —</div>
+                        <div class="preview-round" id="p-round">round ?? · —</div>
                         <div class="preview-name" id="p-name">Nom du Grand Prix</div>
                         <div class="preview-score-row">
                             <span class="preview-score-num" id="p-score">10</span>
@@ -212,93 +212,93 @@
     </div>
 
     <script>
-        // Correspondance Grand Prix → Round et ville
+        // Correspondance Grand Prix → round et ville
         const gpData = {
-            "Australian Grand Prix": {
+            "Grand Prix d'Australie": {
                 round: "Round 01",
                 ville: "Melbourne"
             },
-            "Chinese Grand Prix": {
+            "Grand Prix de Chine": {
                 round: "Round 02",
                 ville: "Shanghai"
             },
-            "Japanese Grand Prix": {
+            "Grand Prix du Japon": {
                 round: "Round 03",
                 ville: "Suzuka"
             },
-            "Miami Grand Prix": {
+            "Grand Prix de Miami": {
                 round: "Round 04",
                 ville: "Miami"
             },
-            "Canadian Grand Prix": {
+            "Grand Prix du Canada": {
                 round: "Round 05",
                 ville: "Montréal"
             },
-            "Monaco Grand Prix": {
+            "Grand Prix de Monaco": {
                 round: "Round 06",
                 ville: "Monaco"
             },
-            "Spanish Grand Prix": {
+            "Grand Prix de Barcelone": {
                 round: "Round 07",
                 ville: "Barcelone"
             },
-            "Austrian Grand Prix": {
+            "Grand Prix d'Autriche": {
                 round: "Round 08",
                 ville: "Spielberg"
             },
-            "British Grand Prix": {
+            "Grand Prix de Grande-Bretagne": {
                 round: "Round 09",
                 ville: "Silverstone"
             },
-            "Belgian Grand Prix": {
+            "Grand Prix de Belgique": {
                 round: "Round 10",
                 ville: "Spa"
             },
-            "Hungarian Grand Prix": {
+            "Grand Prix d'Hongrie": {
                 round: "Round 11",
                 ville: "Budapest"
             },
-            "Dutch Grand Prix": {
+            "Grand Prix des Pays-Bas": {
                 round: "Round 12",
                 ville: "Zandvoort"
             },
-            "Italian Grand Prix": {
+            "Grand Prix d'Italie": {
                 round: "Round 13",
                 ville: "Monza"
             },
-            "spanish Grand Prix": {
+            "Grand Prix de Madrid": {
                 round: "Round 14",
                 ville: "Madrid"
             },
-            "Azerbaijan Grand Prix": {
+            "Grand Prix d'Azerbaijan ": {
                 round: "Round 15",
                 ville: "Bakou"
             },
-            "Singapore Grand Prix": {
+            "Grand Prix de Singapoure": {
                 round: "Round 16",
                 ville: "Singapour"
             },
-            "United States Grand Prix": {
+            "Grand Prix des Etats-Unis": {
                 round: "Round 17",
                 ville: "Austin"
             },
-            "Mexico City Grand Prix": {
+            "Grand Prix du Mexique": {
                 round: "Round 18",
                 ville: "Mexico"
             },
-            "São Paulo Grand Prix": {
+            "Grand Prix du Brésil": {
                 round: "Round 19",
                 ville: "São Paulo"
             },
-            "Las Vegas Grand Prix": {
+            "Grand Prix de Las Vegas": {
                 round: "Round 20",
                 ville: "Las Vegas"
             },
-            "Qatar Grand Prix": {
+            "Grand Prix du Qatar": {
                 round: "Round 21",
                 ville: "Lusail"
             },
-            "Abu Dhabi Grand Prix": {
+            "Grand Prix d'Abu Dhabi ": {
                 round: "Round 22",
                 ville: "Abu Dhabi"
             }
@@ -322,7 +322,7 @@
                 document.getElementById('p-name').textContent = gpVal;
                 document.getElementById('p-name').style.color = 'var(--text-primary)';
             } else {
-                document.getElementById('p-round').textContent = 'Round ?? · —';
+                document.getElementById('p-round').textContent = 'round ?? · —';
                 document.getElementById('p-name').textContent = 'Nom du Grand Prix';
             }
 

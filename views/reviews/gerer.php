@@ -171,7 +171,7 @@
                         <?php $nbCommentaires = $nbCommentairesParReview[$review["id"]] ?? 0; ?>
                         <tr>
                             <td>
-                                <div class="td-round">Round <?= str_pad($index + 1, 2, '0', STR_PAD_LEFT) ?></div>
+                                <div class="td-round">Manche <?= str_pad($index + 1, 2, '0', STR_PAD_LEFT) ?></div>
                                 <div class="td-name"><?= htmlspecialchars($review["title"]) ?></div>
                             </td>
                             <td>
