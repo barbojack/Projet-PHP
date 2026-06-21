@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr-FR">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Résultats — F1 2026</title>
     <link rel="stylesheet" href="/f1_2026/css/global.css">
     <link rel="stylesheet" href="/f1_2026/css/resultats.css">
@@ -107,17 +108,35 @@
     <div class="main">
 
         <div class="topbar">
-            <div class="topbar-left">Résultats</div>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="topbar-left">Résultats</div>
+            </div>
         </div>
 
         <div class="content">
             <div class="page-title">Saison 2026 — Résultats F1</div>
-
             <div id="conteneur-courses">
                 <p class="loading">Connexion aux stands et récupération de la saison...</p>
             </div>
         </div>
     </div>
+
+    <!-- Overlay sidebar mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+    </script>
 
 </body>
 
