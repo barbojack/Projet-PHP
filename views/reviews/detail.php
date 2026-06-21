@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($review["title"]) ?> — F1 2026</title>
     <link rel="stylesheet" href="/f1_2026/css/global.css">
     <link rel="stylesheet" href="/f1_2026/css/review_detail.css">
@@ -106,9 +107,16 @@
     <div class="main">
 
         <div class="topbar">
-            <div class="breadcrumb">
-                <a href="/f1_2026/index.php?page=reviews">Reviews</a> ›
-                <span class="current"><?= htmlspecialchars($review["title"]) ?></span>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="breadcrumb">
+                    <a href="/f1_2026/index.php?page=reviews">Reviews</a> ›
+                    <span class="current"><?= htmlspecialchars($review["title"]) ?></span>
+                </div>
             </div>
         </div>
 
@@ -170,10 +178,8 @@
                                     <div class="comment-author"><?= htmlspecialchars($commentaire["username"]) ?></div>
                                 </div>
 
-                                <!-- Texte affiché normalement -->
                                 <div class="comment-text" id="comment-text-<?= $commentaire["id"] ?>"><?= nl2br(htmlspecialchars($commentaire["content"])) ?></div>
 
-                                <!-- Formulaire d'édition (caché par défaut) -->
                                 <form method="POST" action="/f1_2026/index.php?page=modifier_commentaire&id=<?= $commentaire["id"] ?>&review_id=<?= $id ?>" class="comment-edit-form" id="comment-form-<?= $commentaire["id"] ?>" style="display:none">
                                     <textarea name="content" class="comment-edit-textarea"><?= htmlspecialchars($commentaire["content"]) ?></textarea>
                                     <div class="comment-edit-actions">
@@ -188,7 +194,6 @@
                                         <a href="#" class="danger" onclick="confirmerSuppression(<?= $commentaire["id"] ?>); return false;">Supprimer</a>
                                     </div>
 
-                                    <!-- Confirmation de suppression (cachée par défaut) -->
                                     <div class="delete-confirm" id="delete-confirm-<?= $commentaire["id"] ?>" style="display:none">
                                         <span>Supprimer ce commentaire ?</span>
                                         <a href="/f1_2026/index.php?page=supprimer_commentaire&id=<?= $commentaire["id"] ?>&review_id=<?= $id ?>" class="confirm-yes">Oui, supprimer</a>
@@ -222,7 +227,17 @@
         </div>
     </div>
 
+    <!-- Overlay sidebar mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
     <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
         function modifierCommentaire(id) {
             document.getElementById('comment-text-' + id).style.display = 'none';
             document.getElementById('comment-actions-' + id).style.display = 'none';

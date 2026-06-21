@@ -320,3 +320,29 @@
     font-size: 13px;
     margin-bottom: 12px;
 }
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+    .content { padding: 16px 20px; }
+
+    .detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .review-title { font-size: 24px; }
+
+    .score-big {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .comment-form {
+        flex-direction: column;
+    }
+
+    .comment-form button {
+        width: 100%;
+        padding: 12px;
+        height: auto;
+    }
+}
