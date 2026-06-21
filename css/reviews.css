@@ -104,3 +104,14 @@
     font-style: italic;
     grid-column: 1 / -1;
 }
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+    .content { padding: 16px 20px; }
+
+    .page-title { font-size: 20px; }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+}
