@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nouvelle review — F1 2026</title>
     <link rel="stylesheet" href="/f1_2026/css/global.css">
     <link rel="stylesheet" href="/f1_2026/css/creer_review.css">
@@ -88,7 +89,14 @@
     <div class="main">
 
         <div class="topbar">
-            <div class="topbar-left">Nouvelle review</div>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="topbar-left">Nouvelle review</div>
+            </div>
             <div class="topbar-right">
                 <div class="admin-topbadge">
                     <svg style="width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.5" viewBox="0 0 24 24">
@@ -141,12 +149,12 @@
                                     <option value="Grand Prix d'Italie">round 13 — Grand Prix d'Italie</option>
                                     <option value="Grand Prix de Madrid">round 14 — Grand Prix de Madrid</option>
                                     <option value="Grand Prix d'Azerbaijan">round 15 — Grand Prix d'Azerbaijan</option>
-                                    <option value="Grand Prix de Singapoure">round 16 — Grand Prix de Singapoure </option>
+                                    <option value="Grand Prix de Singapoure">round 16 — Grand Prix de Singapoure</option>
                                     <option value="Grand Prix des Etats-Unis">round 17 — Grand Prix des Etats-Unis</option>
                                     <option value="Grand Prix du Mexique">round 18 — Grand Prix du Mexique</option>
                                     <option value="Grand Prix du Brésil">round 19 — Grand Prix du Brésil</option>
                                     <option value="Grand Prix de Las Vegas">round 20 — Grand Prix de Las Vegas</option>
-                                    <option value="Grand Prix du Qatar">round 21 — Grand Prix du Qatar </option>
+                                    <option value="Grand Prix du Qatar">round 21 — Grand Prix du Qatar</option>
                                     <option value="Grand Prix d'Abu Dhabi">round 22 — Grand Prix d'Abu Dhabi</option>
                                 </select>
                             </div>
@@ -191,7 +199,7 @@
                 <div class="preview-col">
                     <div class="preview-label">Aperçu de la carte</div>
                     <div class="preview-card">
-                        <div class="preview-round" id="p-round">round ?? · —</div>
+                        <div class="preview-round" id="p-round">Round ?? · —</div>
                         <div class="preview-name" id="p-name">Nom du Grand Prix</div>
                         <div class="preview-score-row">
                             <span class="preview-score-num" id="p-score">10</span>
@@ -211,8 +219,10 @@
         </div>
     </div>
 
+    <!-- Overlay sidebar mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
     <script>
-        // Correspondance Grand Prix → round et ville
         const gpData = {
             "Grand Prix d'Australie": {
                 round: "Round 01",
@@ -254,7 +264,7 @@
                 round: "Round 10",
                 ville: "Spa"
             },
-            "Grand Prix d'Hongrie": {
+            "Grand Prix d'Hongire": {
                 round: "Round 11",
                 ville: "Budapest"
             },
@@ -270,7 +280,7 @@
                 round: "Round 14",
                 ville: "Madrid"
             },
-            "Grand Prix d'Azerbaijan ": {
+            "Grand Prix d'Azerbaijan": {
                 round: "Round 15",
                 ville: "Bakou"
             },
@@ -298,7 +308,7 @@
                 round: "Round 21",
                 ville: "Lusail"
             },
-            "Grand Prix d'Abu Dhabi ": {
+            "Grand Prix d'Abu Dhabi": {
                 round: "Round 22",
                 ville: "Abu Dhabi"
             }
@@ -322,7 +332,7 @@
                 document.getElementById('p-name').textContent = gpVal;
                 document.getElementById('p-name').style.color = 'var(--text-primary)';
             } else {
-                document.getElementById('p-round').textContent = 'round ?? · —';
+                document.getElementById('p-round').textContent = 'Round ?? · —';
                 document.getElementById('p-name').textContent = 'Nom du Grand Prix';
             }
 
@@ -342,6 +352,13 @@
                 day: 'numeric',
                 month: 'short'
             });
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
         }
 
         updatePreview();
