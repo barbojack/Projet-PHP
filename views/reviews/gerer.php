@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gérer les reviews — F1 2026</title>
     <link rel="stylesheet" href="/f1_2026/css/global.css">
     <link rel="stylesheet" href="/f1_2026/css/gerer_reviews.css">
@@ -88,7 +89,14 @@
     <div class="main">
 
         <div class="topbar">
-            <div class="topbar-left">Gérer les reviews</div>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="topbar-left">Gérer les reviews</div>
+            </div>
             <div class="topbar-right">
                 <div class="admin-topbadge">
                     <svg style="width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.5" viewBox="0 0 24 24">
@@ -156,70 +164,74 @@
                 <div class="section-title">Toutes les reviews</div>
             </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Grand Prix</th>
-                        <th>Note</th>
-                        <th>Statut</th>
-                        <th>Commentaires</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($reviews as $index => $review): ?>
-                        <?php $nbCommentaires = $nbCommentairesParReview[$review["id"]] ?? 0; ?>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
                         <tr>
-                            <td>
-                                <div class="td-round">Manche <?= str_pad($index + 1, 2, '0', STR_PAD_LEFT) ?></div>
-                                <div class="td-name"><?= htmlspecialchars($review["title"]) ?></div>
-                            </td>
-                            <td>
-                                <span class="score-badge"><?= $review["mark"] ?></span>
-                                <span class="score-small">/20</span>
-                            </td>
-                            <td>
-                                <span class="status-pill published">
-                                    <span class="status-dot"></span>Publié
-                                </span>
-                            </td>
-                            <td>
-                                <span class="comments-count">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                                    </svg>
-                                    <?= $nbCommentaires ?>
-                                </span>
-                            </td>
-                            <td>
-                                <div class="actions">
-                                    <a href="/f1_2026/index.php?page=review_detail&id=<?= $review["id"] ?>" class="btn-action">
-                                        <svg viewBox="0 0 24 24">
-                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                            <circle cx="12" cy="12" r="3" />
-                                        </svg>
-                                        Voir
-                                    </a>
-                                    <a href="/f1_2026/index.php?page=modifier_review&id=<?= $review["id"] ?>" class="btn-action">
-                                        <svg viewBox="0 0 24 24">
-                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                        </svg>
-                                        Modifier
-                                    </a>
-                                    <a href="#" class="btn-action danger" data-id="<?= $review["id"] ?>" data-nom="<?= htmlspecialchars($review["title"], ENT_QUOTES) ?>" onclick="ouvrirModal(this)">
-                                        <svg viewBox="0 0 24 24">
-                                            <polyline points="3 6 5 6 21 6" />
-                                            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
-                                        </svg>
-                                        Supprimer
-                                    </a>
-                                </div>
-                            </td>
+                            <th>Grand Prix</th>
+                            <th>Note</th>
+                            <th>Statut</th>
+                            <th>Commentaires</th>
+                            <th>Actions</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($reviews as $index => $review): ?>
+                            <?php $nbCommentaires = $nbCommentairesParReview[$review["id"]] ?? 0; ?>
+                            <tr>
+                                <td>
+                                    <div class="td-round">Manche <?= str_pad($index + 1, 2, '0', STR_PAD_LEFT) ?></div>
+                                    <div class="td-name"><?= htmlspecialchars($review["title"]) ?></div>
+                                </td>
+                                <td>
+                                    <div class="score-group">
+                                        <span class="score-badge"><?= $review["mark"] ?></span>
+                                        <span class="score-small">/20</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="status-pill published">
+                                        <span class="status-dot"></span>Publié
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="comments-count">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                        </svg>
+                                        <?= $nbCommentaires ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="actions">
+                                        <a href="/f1_2026/index.php?page=review_detail&id=<?= $review["id"] ?>" class="btn-action">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+                                            Voir
+                                        </a>
+                                        <a href="/f1_2026/index.php?page=modifier_review&id=<?= $review["id"] ?>" class="btn-action">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                            </svg>
+                                            Modifier
+                                        </a>
+                                        <a href="#" class="btn-action danger" data-id="<?= $review["id"] ?>" data-nom="<?= htmlspecialchars($review["title"], ENT_QUOTES) ?>" onclick="ouvrirModal(this)">
+                                            <svg viewBox="0 0 24 24">
+                                                <polyline points="3 6 5 6 21 6" />
+                                                <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                                            </svg>
+                                            Supprimer
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </div>
@@ -244,7 +256,17 @@
         </div>
     </div>
 
+    <!-- Overlay sidebar mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
     <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
         function ouvrirModal(el) {
             const id = el.getAttribute('data-id');
             const nom = el.getAttribute('data-nom');
