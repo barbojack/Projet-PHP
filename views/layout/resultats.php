@@ -12,7 +12,7 @@
 
 <body>
 
-    <!-- SIDEBAR -->
+    <!-- SIDEBAR  -->
     <div class="sidebar">
         <div class="sidebar-logo">
             <div class="logo-f1">F1 2026</div>
@@ -27,6 +27,7 @@
                 </svg>
                 Accueil
             </a>
+            <!-- État 'active' positionné sur l'onglet courant pour guider visuellement l'utilisateur -->
             <a href="/f1_2026/index.php?page=resultats" class="nav-item active">
                 <svg class="nav-icon" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10" />
@@ -91,7 +92,9 @@
 
         <div class="sidebar-bottom">
             <?php if (isset($_SESSION["user_id"])): ?>
+                <!-- Composant "User Card" : Affichage contextuel du profil utilisateur connecté -->
                 <div class="user-card">
+                    <!-- Extraction de l'initiale du pseudo pour générer un avatar générique à la volée -->
                     <div class="avatar"><?= strtoupper(substr($_SESSION["username"], 0, 1)) ?></div>
                     <div>
                         <div class="user-name"><?= htmlspecialchars($_SESSION["username"]) ?></div>
@@ -104,7 +107,7 @@
         </div>
     </div>
 
-    <!-- MAIN -->
+    <!-- MAIN CONTEXT -->
     <div class="main">
 
         <div class="topbar">
@@ -120,16 +123,21 @@
 
         <div class="content">
             <div class="page-title">Saison 2026 — Résultats F1</div>
+
+            /*POINT D'INJECTION ARCHITECTURAL : L'asynchronisme
+            Ce conteneur vide est l'élément central pour le script JavaScript. C'est ici que l'application
+            va basculer d'une logique purement PHP vers une mise à jour dynamique du DOM (via l'API Fetch),
+            offrant une expérience fluide sans rechargement de page.*/
             <div id="conteneur-courses">
                 <p class="loading">Connexion aux stands et récupération de la saison...</p>
             </div>
         </div>
     </div>
 
-    <!-- Overlay sidebar mobile -->
     <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
     <script>
+        //Sidebar Responsive
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             const overlay = document.getElementById('sidebar-overlay');

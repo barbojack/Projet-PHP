@@ -11,7 +11,6 @@
 
 <body>
 
-    <!-- SIDEBAR -->
     <div class="sidebar">
         <div class="sidebar-logo">
             <div class="logo-f1">F1 2026</div>
@@ -63,7 +62,6 @@
         </div>
     </div>
 
-    <!-- MAIN -->
     <div class="main">
 
         <div class="topbar">
@@ -72,7 +70,6 @@
 
         <div class="content">
 
-            <!-- Fond avec bandes rouges -->
             <div class="visual-bg">
                 <div class="stripe stripe-1"></div>
                 <div class="stripe stripe-2"></div>
@@ -81,7 +78,6 @@
                 <div class="stripe stripe-5"></div>
             </div>
 
-            <!-- Texte en bas à gauche -->
             <div class="visual-content">
                 <div class="visual-tag">Saison 2026</div>
                 <div class="visual-title">Rejoignez<br>la communauté</div>
@@ -102,7 +98,6 @@
                 </div>
             </div>
 
-            <!-- Formulaire centré -->
             <div class="form-box">
 
                 <div class="tabs">
@@ -113,11 +108,19 @@
                 <div class="form-box-title"><span class="title-accent"></span>Créer un compte</div>
                 <div class="form-box-sub">Rejoignez la communauté F1 2026</div>
 
-                <?php if ($erreur): ?>
+                <?php 
+                // SÉCURITÉ CONTRÔLE : Affichage des messages d'erreur
+                // htmlspecialchars() neutralise les injections XSS en convertissant les caractères spéciaux en entités HTML
+                if ($erreur): 
+                ?>
                     <p class="erreur-msg"><?= htmlspecialchars($erreur) ?></p>
                 <?php endif; ?>
 
-                <?php if ($succes): ?>
+                <?php 
+                // VISUALISATION DU SUCCÈS
+                // S'affiche lorsque le contrôleur a validé l'inscription et persisté les données en BDD via le modèle
+                if ($succes): 
+                ?>
                     <p class="succes-msg"><?= htmlspecialchars($succes) ?></p>
                 <?php endif; ?>
 
@@ -154,10 +157,11 @@
         </div>
     </div>
 
-    <!-- Overlay sidebar mobile -->
     <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
     <script>
+        //Menu Responsif Mobile
+        //Manipulation directe des classes du DOM (Document Object Model) pour activer/désactiver la Sidebar.
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             const overlay = document.getElementById('sidebar-overlay');

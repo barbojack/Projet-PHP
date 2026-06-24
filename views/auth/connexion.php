@@ -1,3 +1,4 @@
+// Il consomme de manière passive les variables injectées par le contrôleur ($erreur, $identifiant_saisi).
 <!DOCTYPE html>
 <html lang="fr-FR">
 
@@ -11,7 +12,6 @@
 
 <body>
 
-    <!-- SIDEBAR -->
     <div class="sidebar">
         <div class="sidebar-logo">
             <div class="logo-f1">F1 2026</div>
@@ -63,7 +63,6 @@
         </div>
     </div>
 
-    <!-- MAIN -->
     <div class="main">
 
         <div class="topbar">
@@ -79,7 +78,6 @@
 
         <div class="content">
 
-            <!-- Fond avec bandes rouges -->
             <div class="visual-bg">
                 <div class="stripe stripe-1"></div>
                 <div class="stripe stripe-2"></div>
@@ -88,7 +86,6 @@
                 <div class="stripe stripe-5"></div>
             </div>
 
-            <!-- Texte en bas à gauche -->
             <div class="visual-content">
                 <div class="visual-tag">Saison 2026</div>
                 <div class="visual-title">Rejoignez<br>la communauté</div>
@@ -109,7 +106,6 @@
                 </div>
             </div>
 
-            <!-- Formulaire centré -->
             <div class="form-box">
 
                 <div class="tabs">
@@ -120,7 +116,12 @@
                 <div class="form-box-title"><span class="title-accent"></span>Bon retour !</div>
                 <div class="form-box-sub">Connectez-vous pour accéder à votre compte</div>
 
-                <?php if ($erreur): ?>
+                <?php
+                // Affichage dynamique des messages d'erreur
+                // Utilisation systématique de htmlspecialchars() pour neutraliser tout script malveillant.
+                // Cela immunise l'application contre les attaques par injection de balises HTML.
+                if ($erreur):
+                ?>
                     <p class="erreur-msg"><?= htmlspecialchars($erreur) ?></p>
                 <?php endif; ?>
 
@@ -147,10 +148,13 @@
         </div>
     </div>
 
-    <!-- Overlay sidebar mobile -->
     <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
     <script>
+        /**
+         * ANIMATION & RESPONSIVE DESIGN
+         * Gère l'affichage asynchrone et fluide de la sidebar sur les résolutions mobiles.
+         */
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             const overlay = document.getElementById('sidebar-overlay');
