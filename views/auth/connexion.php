@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion — F1 2026</title>
     <link rel="stylesheet" href="/f1_2026/css/global.css">
     <link rel="stylesheet" href="/f1_2026/css/auth.css">
@@ -66,7 +67,14 @@
     <div class="main">
 
         <div class="topbar">
-            <div class="topbar-left">Connexion</div>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="topbar-left">Connexion</div>
+            </div>
         </div>
 
         <div class="content">
@@ -138,6 +146,18 @@
 
         </div>
     </div>
+
+    <!-- Overlay sidebar mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+    </script>
 
 </body>
 

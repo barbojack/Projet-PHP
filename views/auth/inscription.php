@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription — F1 2026</title>
     <link rel="stylesheet" href="/f1_2026/css/global.css">
     <link rel="stylesheet" href="/f1_2026/css/auth.css">
@@ -152,6 +153,18 @@
 
         </div>
     </div>
+
+    <!-- Overlay sidebar mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+    </script>
 
 </body>
 
