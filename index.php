@@ -4,7 +4,7 @@ require 'db.php';
 
 define('BASE_PATH', __DIR__ . DIRECTORY_SEPARATOR);
 
-require_once BASE_PATH . 'controllers' . DIRECTORY_SEPARATOR . 'AuthController.php';
+require_once BASE_PATH . 'controllers' . DIRECTORY_SEPARATOR . 'AuthentificationController.php';
 require_once BASE_PATH . 'controllers' . DIRECTORY_SEPARATOR . 'ReviewController.php';
 require_once BASE_PATH . 'controllers' . DIRECTORY_SEPARATOR . 'CommentController.php';
 
@@ -21,17 +21,17 @@ switch ($page) {
         break;
 
     case "inscription":
-        $controller = new AuthController($pdo);
+        $controller = new AuthentificationController($pdo);
         $controller->inscription();
         break;
 
     case "connexion":
-        $controller = new AuthController($pdo);
+        $controller = new AuthentificationController($pdo);
         $controller->connexion();
         break;
 
     case "deconnexion":
-        $controller = new AuthController($pdo);
+        $controller = new AuthentificationController($pdo);
         $controller->deconnexion();
         break;
 
