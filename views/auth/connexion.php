@@ -95,15 +95,15 @@
                 <div class="visual-desc">Connectez-vous pour commenter les reviews des Grands Prix, partager vos analyses et suivre la saison avec d'autres passionnés de Formule 1.</div>
                 <div class="stats-row">
                     <div>
-                        <div class="stat-val">6</div>
+                        <div class="stat-val">7</div>
                         <div class="stat-lbl">Reviews publiées</div>
                     </div>
                     <div>
-                        <div class="stat-val">40+</div>
+                        <div class="stat-val">6+</div>
                         <div class="stat-lbl">Commentaires</div>
                     </div>
                     <div>
-                        <div class="stat-val">16</div>
+                        <div class="stat-val">15</div>
                         <div class="stat-lbl">GP restants</div>
                     </div>
                 </div>
