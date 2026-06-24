@@ -11,7 +11,7 @@ class ReviewController
         $this->reviewModel = new Review($pdo);
     }
 
-    public function liste()
+    public function list()
     {
         $reviews = $this->reviewModel->findAll();
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'liste.php';
@@ -55,7 +55,7 @@ class ReviewController
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'detail.php';
     }
 
-    public function creer()
+    public function create()
     {
         if (!isset($_SESSION["user_id"]) || $_SESSION["isAdmin"] != 1) {
             header("Location: /f1_2026/index.php");
@@ -91,7 +91,7 @@ class ReviewController
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'creer.php';
     }
 
-    public function modifier()
+    public function modificate()
     {
         if (!isset($_SESSION["user_id"]) || $_SESSION["isAdmin"] != 1) {
             header("Location: /f1_2026/index.php");
@@ -133,7 +133,7 @@ class ReviewController
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'modifier.php';
     }
 
-    public function gerer($pdo)
+    public function manage($pdo)
     {
         if (!isset($_SESSION["user_id"]) || $_SESSION["isAdmin"] != 1) {
             header("Location: /f1_2026/index.php");
@@ -156,7 +156,7 @@ class ReviewController
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'gerer.php';
     }
 
-    public function supprimer()
+    public function delete()
     {
         if (!isset($_SESSION["user_id"]) || $_SESSION["isAdmin"] != 1) {
             header("Location: /f1_2026/index.php");

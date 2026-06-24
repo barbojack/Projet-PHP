@@ -11,7 +11,7 @@ class AuthController
         $this->userModel = new User($pdo);
     }
 
-    public function inscription()
+    public function registration()
     {
         $erreur = "";
         $succes = "";
@@ -48,7 +48,7 @@ class AuthController
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'auth' . DIRECTORY_SEPARATOR . 'inscription.php';
     }
 
-    public function connexion()
+    public function connection()
     {
         $erreur = "";
         $identifiant_saisi = "";
@@ -79,7 +79,7 @@ class AuthController
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'auth' . DIRECTORY_SEPARATOR . 'connexion.php';
     }
 
-    public function deconnexion()
+    public function disconnection()
     {
         session_destroy();
         header("Location: /f1_2026/index.php?page=connexion");

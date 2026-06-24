@@ -22,22 +22,22 @@ switch ($page) {
 
     case "inscription":
         $controller = new AuthController($pdo);
-        $controller->inscription();
+        $controller->registration();
         break;
 
     case "connexion":
         $controller = new AuthController($pdo);
-        $controller->connexion();
+        $controller->connection();
         break;
 
     case "deconnexion":
         $controller = new AuthController($pdo);
-        $controller->deconnexion();
+        $controller->disconnection();
         break;
 
     case "reviews":
         $controller = new ReviewController($pdo);
-        $controller->liste();
+        $controller->list();
         break;
 
     case "review_detail":
@@ -47,32 +47,32 @@ switch ($page) {
 
     case "creer_review":
         $controller = new ReviewController($pdo);
-        $controller->creer();
+        $controller->create();
         break;
 
     case "modifier_review":
         $controller = new ReviewController($pdo);
-        $controller->modifier();
+        $controller->modificate();
         break;
 
     case "supprimer_review":
         $controller = new ReviewController($pdo);
-        $controller->supprimer();
+        $controller->delete();
         break;
 
     case "gerer_reviews":
         $controller = new ReviewController($pdo);
-        $controller->gerer($pdo);
+        $controller->manage($pdo);
         break;
 
     case "modifier_commentaire":
         $controller = new CommentController($pdo);
-        $controller->modifier();
+        $controller->modificate();
         break;
 
     case "supprimer_commentaire":
         $controller = new CommentController($pdo);
-        $controller->supprimer();
+        $controller->delete();
         break;
 
     default:

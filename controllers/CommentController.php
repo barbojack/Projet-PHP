@@ -11,7 +11,7 @@ class CommentController
         $this->commentModel = new Comment($pdo);
     }
 
-    public function modifier()
+    public function modificate()
     {
         if (!isset($_SESSION["user_id"])) {
             header("Location: index.php");
@@ -48,7 +48,7 @@ class CommentController
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'reviews' . DIRECTORY_SEPARATOR . 'modifier_commentaire.php';
     }
 
-    public function supprimer()
+    public function delete()
     {
         if (!isset($_SESSION["user_id"])) {
             header("Location: index.php");
