@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Modifier le commentaire — F1 2026</title>
+    <title>F1 HUB - Modifier le commentaire</title>
     <link rel="stylesheet" href="style.css">
 </head>
 

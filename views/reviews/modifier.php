@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Modifier la review — F1 2026</title>
+    <title>F1 HUB - Modifier la review</title>
     <link rel="stylesheet" href="/f1_2026/css/global.css">
     <link rel="stylesheet" href="/f1_2026/css/modifier_review.css">
 </head>
