@@ -32,7 +32,7 @@ switch ($page) {
 
     case "deconnexion":
         $controller = new AuthController($pdo);
-        $controller->disconnection();
+        $controller->disconnect();
         break;
 
     case "reviews":

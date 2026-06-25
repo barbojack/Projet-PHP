@@ -88,6 +88,16 @@ class AuthController
                     $_SESSION["username"] = $utilisateur["username"];
                     $_SESSION["isAdmin"]  = $utilisateur["isAdmin"];
 
+                    // GESTION DU COOKIE DE PERSISTANCE (UX) : Mémorisation de l'identifiant pour pré-remplir le formulaire
+                    // Sécurisation applicative : Activation du flag 'HttpOnly' (dernier paramètre à true) pour bloquer les attaques XSS
+                    if (isset($_POST['remember'])) {
+                        $expiration = time() + (3600 * 24 * 30); // Cycle de vie de 30 jours
+                        setcookie("remember_me", $utilisateur["username"], $expiration, "/", "", false, true);
+                    } else {
+                        // Révocation du cookie si la case est décochée lors d'une authentification réussie
+                        setcookie("remember_me", "", time() - 3600, "/");
+                    }
+
                     // Redirection HTTP vers l'accueil et arrêt immédiat du script pour sécuriser le thread
                     header("Location: /f1_2026/index.php");
                     exit();
@@ -98,7 +108,7 @@ class AuthController
         require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'auth' . DIRECTORY_SEPARATOR . 'connexion.php';
     }
 
-    public function disconnection()
+    public function disconnect()
     {
         // Destruction des données de session côté serveur
         session_destroy();

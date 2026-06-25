@@ -1,4 +1,3 @@
-// Il consomme de manière passive les variables injectées par le contrôleur ($erreur, $identifiant_saisi).
 <!DOCTYPE html>
 <html lang="fr-FR">
 
@@ -116,24 +115,27 @@
                 <div class="form-box-title"><span class="title-accent"></span>Bon retour !</div>
                 <div class="form-box-sub">Connectez-vous pour accéder à votre compte</div>
 
-                <?php
-                // Affichage dynamique des messages d'erreur
-                // Utilisation systématique de htmlspecialchars() pour neutraliser tout script malveillant.
-                // Cela immunise l'application contre les attaques par injection de balises HTML.
-                if ($erreur):
-                ?>
+                <?php if ($erreur): ?>
                     <p class="erreur-msg"><?= htmlspecialchars($erreur) ?></p>
                 <?php endif; ?>
 
                 <form method="POST" action="/f1_2026/index.php?page=connexion">
                     <div class="form-group">
                         <label>Nom d'utilisateur ou e-mail</label>
-                        <input type="text" name="identifiant" placeholder="votre@email.com ou pseudo" value="<?= htmlspecialchars($identifiant_saisi) ?>" required>
+                        <?php
+                        $valeur_champ = !empty($identifiant_saisi) ? $identifiant_saisi : ($_COOKIE['remember_me'] ?? '');
+                        ?>
+                        <input type="text" name="identifiant" placeholder="votre@email.com ou pseudo" value="<?= htmlspecialchars($valeur_champ) ?>" required>
                     </div>
 
                     <div class="form-group">
                         <label>Mot de passe</label>
                         <input type="password" name="password" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-group-checkbox" style="display: flex; align-items: center; gap: 8px; margin-bottom: 20px;">
+                        <input type="checkbox" name="remember" id="remember" <?= isset($_COOKIE['remember_me']) ? 'checked' : '' ?>>
+                        <label for="remember" style="margin-bottom: 0; cursor: pointer; font-size: 0.9rem; color: #fff;">Se souvenir de moi</label>
                     </div>
 
                     <button type="submit" class="btn-submit">Se connecter</button>
@@ -151,10 +153,6 @@
     <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
     <script>
-        /**
-         * ANIMATION & RESPONSIVE DESIGN
-         * Gère l'affichage asynchrone et fluide de la sidebar sur les résolutions mobiles.
-         */
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             const overlay = document.getElementById('sidebar-overlay');
